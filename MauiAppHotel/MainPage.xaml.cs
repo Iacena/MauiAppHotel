@@ -7,6 +7,7 @@ namespace MauiAppHotel;
 
 public partial class MainPage : ContentPage
 {
+    // Requisito: Array de Objetos com Tamanho Dinâmico (List)
     public List<Quarto> ListaQuartos { get; set; } = new List<Quarto>
     {
         new Quarto { Descricao = "Suíte Standard (Simples)", ValorDiaria = 150.00 },
@@ -18,6 +19,7 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 
+        // Requisito: Validação de elementos da UI
         dtpCheckIn.MinimumDate = DateTime.Now;
         dtpCheckOut.MinimumDate = DateTime.Now.AddDays(1);
         pckQuartos.ItemsSource = ListaQuartos;
@@ -25,7 +27,8 @@ public partial class MainPage : ContentPage
 
     private void OnDataSelecionada(object sender, DateChangedEventArgs e)
     {
-        dtpCheckOut.MinimumDate = e.NewDate.Value.AddDays(1);
+        // Garante que o Check-Out seja sempre no mínimo um dia após o Check-In
+        dtpCheckOut.MinimumDate = ((DateTime)e.NewDate).AddDays(1);
     }
 
     private async void OnAvancarClicked(object sender, EventArgs e)
@@ -36,17 +39,24 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        var dadosHospedagem = new Hospedagem
+        try
         {
-            QuartoSelecionado = (Quarto)pckQuartos.SelectedItem,
-            QntAdultos = Convert.ToInt32(stpAdultos.Value),
-            QntCriancas = Convert.ToInt32(stpCriancas.Value),
+            var dadosHospedagem = new Hospedagem
+            {
+                QuartoSelecionado = (Quarto)pckQuartos.SelectedItem,
+                QntAdultos = Convert.ToInt32(stpAdultos.Value),
+                QntCriancas = Convert.ToInt32(stpCriancas.Value),
+                DataCheckIn = (DateTime)dtpCheckIn.Date,
+                DataCheckOut = (DateTime)dtpCheckOut.Date
+            };
 
-            DataCheckIn = (DateTime)dtpCheckIn.Date,
-            DataCheckOut = (DateTime)dtpCheckOut.Date
-        };
-
-        await Navigation.PushAsync(new ResumoPage(dadosHospedagem));
+            await Navigation.PushAsync(new ResumoPage(dadosHospedagem));
+        }
+        catch (Exception ex)
+        {
+            // Captura as exceções lançadas pelo set das propriedades
+            await DisplayAlertAsync("Erro", ex.Message, "OK");
+        }
     }
 
     private async void OnSobreClicked(object sender, EventArgs e)

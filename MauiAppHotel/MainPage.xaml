@@ -67,11 +67,11 @@
                     <Label Text="Escolha o Quarto" FontAttributes="Bold" TextColor="#34495E" />
 
                     <Picker x:Name="pckQuartos" 
-        Title="Selecione uma opção..." 
-        ItemDisplayBinding="{Binding Descricao}" 
-        TextColor="Black" 
-        TitleColor="#34495E" 
-        BackgroundColor="#EAECEE" />
+                        Title="Selecione uma opção..." 
+                        ItemDisplayBinding="{Binding Descricao}" 
+                        TextColor="Black" 
+                        TitleColor="#34495E" 
+                        BackgroundColor="#EAECEE" />    
                 </VerticalStackLayout>
             </Border>
 
