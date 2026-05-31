@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.SobrePage"
+             Title="Sobre o Desenvolvedor"
+             BackgroundColor="#F4F6F9">
+
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Label Text="Informações do Sistema" FontSize="24" FontAttributes="Bold" TextColor="#2C3E50" HorizontalOptions="Center" />
+
+        <Border Stroke="#BDC3C7" StrokeThickness="1" Padding="20" WidthRequest="300">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="8" />
+            </Border.StrokeShape>
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Desenvolvedor:" FontAttributes="Bold" TextColor="#34495E" />
+
+                <Label Text="Julia" FontSize="16" TextColor="#7F8C8D" />
+
+                <Line Stroke="#BDC3C7" StrokeThickness="1" />
+
+                <Label Text="Ano de Desenvolvimento:" FontAttributes="Bold" TextColor="#34495E" />
+                <Label Text="2026" FontSize="16" TextColor="#7F8C8D" />
+
+                <Line Stroke="#BDC3C7" StrokeThickness="1" />
+
+                <Label Text="Instituição:" FontAttributes="Bold" TextColor="#34495E" />
+                <Label Text="Centro Paula Souza - CPS" FontSize="16" TextColor="#7F8C8D" />
+            </VerticalStackLayout>
+        </Border>
+
+        <Button Text="Voltar" 
+                BackgroundColor="#34495E" 
+                TextColor="White" 
+                CornerRadius="8" 
+                WidthRequest="150" 
+                Clicked="OnVoltarClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>

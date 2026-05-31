@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.ResumoPage"
+             Title="Resumo da Reserva"
+             BackgroundColor="#F4F6F9">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="Confirmação da Reserva" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#2C3E50" />
+
+        <Border Stroke="#BDC3C7" StrokeThickness="1" Padding="15">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="8" />
+            </Border.StrokeShape>
+            <VerticalStackLayout Spacing="12">
+                <Label Text="{Binding QuartoSelecionado.Descricao, StringFormat='Acomodação: {0}'}" FontAttributes="Bold" FontSize="16" />
+                <Label Text="{Binding Estadia, StringFormat='Total de Diárias: {0} dias'}" />
+                <Label Text="{Binding QntAdultos, StringFormat='Adultos: {0}'}" />
+                <Label Text="{Binding QntCriancas, StringFormat='Crianças: {0}'}" />
+                <Line Stroke="#BDC3C7" StrokeThickness="1" HorizontalOptions="Fill" />
+                <Label Text="{Binding ValorTotal, StringFormat='Valor Total: R$ {0:F2}'}" TextColor="#2ECC71" FontSize="20" FontAttributes="Bold" />
+            </VerticalStackLayout>
+        </Border>
+
+        <Button Text="Concluir Reserva" 
+                BackgroundColor="#34495E" 
+                TextColor="White" 
+                CornerRadius="8" 
+                HeightRequest="50" 
+                Clicked="OnConcluirClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>
