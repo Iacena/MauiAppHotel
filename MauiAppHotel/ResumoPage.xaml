@@ -5,30 +5,34 @@
              Title="Resumo da Reserva"
              BackgroundColor="#F4F6F9">
 
-    <VerticalStackLayout Padding="20" Spacing="20">
-
-        <Label Text="Confirmação da Reserva" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#2C3E50" />
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Dados da Hospedagem" FontSize="24" FontAttributes="Bold" TextColor="#2C3E50" HorizontalOptions="Center" />
 
         <Border Stroke="#BDC3C7" StrokeThickness="1" Padding="15">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="8" />
             </Border.StrokeShape>
-            <VerticalStackLayout Spacing="12">
-                <Label Text="{Binding QuartoSelecionado.Descricao, StringFormat='Acomodação: {0}'}" FontAttributes="Bold" FontSize="16" />
-                <Label Text="{Binding Estadia, StringFormat='Total de Diárias: {0} dias'}" />
-                <Label Text="{Binding QntAdultos, StringFormat='Adultos: {0}'}" />
-                <Label Text="{Binding QntCriancas, StringFormat='Crianças: {0}'}" />
-                <Line Stroke="#BDC3C7" StrokeThickness="1" HorizontalOptions="Fill" />
-                <Label Text="{Binding ValorTotal, StringFormat='Valor Total: R$ {0:F2}'}" TextColor="#2ECC71" FontSize="20" FontAttributes="Bold" />
+            <VerticalStackLayout Spacing="10">
+
+                <Label Text="{Binding QuartoSelecionado.Descricao, StringFormat='Quarto: {0}'}" TextColor="Black" FontAttributes="Bold"/>
+                <Label Text="{Binding QntAdultos, StringFormat='Adultos: {0}'}" TextColor="Black"/>
+                <Label Text="{Binding QntCriancas, StringFormat='Crianças: {0}'}" TextColor="Black"/>
+                <Label Text="{Binding DataCheckIn, StringFormat='Check-in: {0:dd/MM/yyyy}'}" TextColor="Black"/>
+                <Label Text="{Binding DataCheckOut, StringFormat='Check-out: {0:dd/MM/yyyy}'}" TextColor="Black"/>
+                <Label Text="{Binding Estadia, StringFormat='Total de Dias: {0}'}" TextColor="Black"/>
+
+                <Label Text="{Binding ValorTotal, StringFormat='Valor Total: {0:C}'}" TextColor="DarkGreen" FontAttributes="Bold" FontSize="18" Margin="0,10,0,0"/>
+
             </VerticalStackLayout>
         </Border>
 
-        <Button Text="Concluir Reserva" 
-                BackgroundColor="#34495E" 
+        <Button Text="Voltar" 
+                BackgroundColor="#E74C3C" 
                 TextColor="White" 
+                FontAttributes="Bold" 
                 CornerRadius="8" 
                 HeightRequest="50" 
-                Clicked="OnConcluirClicked" />
+                Clicked="OnVoltarClicked" />
 
     </VerticalStackLayout>
 </ContentPage>

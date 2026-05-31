@@ -1,20 +1,23 @@
+using System;
 using Microsoft.Maui.Controls;
 using MauiAppHotel.Models;
-using System;
 
 namespace MauiAppHotel;
 
 public partial class ResumoPage : ContentPage
 {
+    // O construtor recebe o objeto do tipo Hospedagem
     public ResumoPage(Hospedagem hospedagem)
     {
         InitializeComponent();
-        this.BindingContext = hospedagem;
+
+        // Isso conecta o objeto recebido com a interface visual XAML
+        BindingContext = hospedagem;
     }
 
-    private async void OnConcluirClicked(object sender, EventArgs e)
+    private async void OnVoltarClicked(object sender, EventArgs e)
     {
-        await DisplayAlertAsync("Sucesso!", "Sua reserva foi confirmada.", "OK");
-        await Navigation.PopToRootAsync();
+        // Remove a página atual da pilha de navegação, voltando para a tela anterior
+        await Navigation.PopAsync();
     }
 }
